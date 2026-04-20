@@ -1,12 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useUserProfile } from '@/src/context/UserContext';
-import { TabContainer } from '@/src/components/tabs/TabContainer';
+import { DismissKeyboardView } from '@/src/components/ui/DismissKeyboardView';
 import { StepTitle } from '@/src/components/onboarding/ui/Title';
 import { Strings } from '@/src/constants/Strings';
-import { CaloriesCard } from '@/src/components/tabs/CaloriesCard';
-import { InfoCard } from '@/src/components/tabs/InfoCard';
+import { CaloriesCard } from '@/src/components/diary/CaloriesCard';
+import { useAppSelector } from '@/src/hooks/reduxHooks';
 
 export default function TabOneScreen() {
+  const name = useAppSelector((state) => state.user.stats?.name);
   const { profile } = useUserProfile();
   if (!profile) {
     return (
@@ -17,11 +18,10 @@ export default function TabOneScreen() {
   }
 
   return (
-    <TabContainer>
-      <StepTitle style={styles.welcomeText}>{Strings.tabs.welcomeText + ' ' + profile.name + '!'}</StepTitle>
+    <DismissKeyboardView>
+      <StepTitle style={styles.welcomeText}>{Strings.tabs.welcomeText + ' ' + name + '!'}</StepTitle>
       <CaloriesCard />
-      <InfoCard />
-    </TabContainer>
+    </DismissKeyboardView>
   );
 }
 

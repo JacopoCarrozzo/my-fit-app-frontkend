@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const TabContainer = ({ children }: Props) => {
+export const DismissKeyboardView = ({ children }: Props) => {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={styles.container}>{children}</View>

@@ -3,14 +3,18 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { UserProfileProvider, useUserProfile } from '@/src/context/UserContext';
 import Colors from '@/src/constants/Colors';
+import { Provider } from 'react-redux';
+import { store } from '@/src/store';
 
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   return (
-    <UserProfileProvider>
-      <RootLayoutNav />
-    </UserProfileProvider>
+    <Provider store={store}>
+      <UserProfileProvider>
+        <RootLayoutNav />
+      </UserProfileProvider>
+    </Provider>
   );
 }
 

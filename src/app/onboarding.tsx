@@ -14,12 +14,16 @@ import Step7_ActivitySelection from '@/src/components/onboarding/steps/Step7_Act
 import { finalizeNutritionProfile } from '@/src/utils/nutrition/index';
 import Colors from '@/src/constants/Colors';
 import { ProgressBar } from '../components/onboarding/ui/ProgressBar';
+import { useAppDispatch } from '@/src/hooks/reduxHooks';
+import { setUserProfile } from '@/src/features/user/userSlice';
 
 export default function OnboardingScreen() {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<Partial<UserStats>>({});
   const { setProfile } = useUserProfile();
   const TOTAL_STEPS = 7;
+
+  const dispatch = useAppDispatch();
 
   const handleNext = async (newData?: Partial<UserStats>) => {
     const updatedData = { ...formData, ...newData };
@@ -28,9 +32,16 @@ export default function OnboardingScreen() {
     if (step === TOTAL_STEPS) {
       const finalProfile = finalizeNutritionProfile(updatedData as UserStats);
 
-      await setProfile(finalProfile);
+      dispatch(
+        setUserProfile({
+          stats: updatedData as UserStats,
+          profile: finalProfile,
+        }),
+      );
+
+      await setProfile(finalProfile); // Context — per ora lo teniamo per la navigazione
     } else {
-      setStep(step + 1);
+      setStep((s) => s + 1);
     }
   };
 

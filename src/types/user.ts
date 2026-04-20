@@ -1,6 +1,9 @@
+import { Macros } from './nutrition'
+
 export type Goal = 'LOSE_WEIGHT' | 'GAIN_MUSCLE' | 'MAINTAIN';
 export type Gender = 'MALE' | 'FEMALE';
 export type ActivityLevel = 1.2 | 1.375 | 1.55 | 1.725 | 1.9;
+
 
 export interface UserStats {
   goal: Goal;
@@ -14,7 +17,7 @@ export interface UserStats {
 
 export interface UserProfile extends UserStats {
   dailyCalories: number;
-  macros: { protein: number; carbs: number; fats: number };
+  macros: Macros;
 }
 
 export interface UserProfileContextValue {

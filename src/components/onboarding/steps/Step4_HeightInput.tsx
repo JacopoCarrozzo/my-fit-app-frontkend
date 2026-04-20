@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StepProps } from '@/src/types/onboarding';
-import { BackButton } from '@/src/components/onboarding/ui/BackButton';
+import { BackButton } from '@/src/components/ui/BackButton';
 import { PrimaryButton } from '@/src/components/onboarding/ui/PrimaryButton';
 import { StepTitle } from '@/src/components/onboarding/ui/Title';
 import { Strings } from '@/src/constants/Strings';

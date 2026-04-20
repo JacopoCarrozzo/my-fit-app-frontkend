@@ -1,13 +1,13 @@
-import { TabContainer } from '@/src/components/tabs/TabContainer';
+import { DismissKeyboardView } from '@/src/components/ui/DismissKeyboardView';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function TrainingPage() {
   return (
-    <TabContainer>
+    <DismissKeyboardView>
       <View style={styles.container}>
         <Text style={styles.title}>Training Schedule</Text>
       </View>
-    </TabContainer>
+    </DismissKeyboardView>
   );
 }
 

@@ -18,7 +18,7 @@ export const CaloriesCard = () => {
       <View style={styles.macrosContainer}>
         <View style={styles.macroBox}>
           <Text style={styles.macroLabel}>Protein</Text>
-          <Text style={styles.macroValue}>{profile.macros.protein + 'g'}</Text>
+          <Text style={styles.macroValue}>{profile.macros.proteins + 'g'}</Text>
         </View>
 
         <View style={styles.macroBox}>
